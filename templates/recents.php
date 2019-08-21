@@ -9,7 +9,7 @@
     		<div class="row">
     			<div class="col-md-6 order-md-last col-lg-6 ftco-animate">
     				<div class="blog-entry">
-    					<div class="img img-big d-flex align-items-end" style="background-image: url("<?php echo get_template_directory_uri(); ?>/images/image_2.jpg");">
+    					<div class="img img-big d-flex align-items-end" style="background-image: url(<?php echo get_template_directory_uri(). "/images/image_2.jpg";?>);">
     						<div class="overlay"></div>
     						<div class="text">
     							<span class="subheading">Food</span>
@@ -23,7 +23,7 @@
     				<div class="row">
     					<div class="col-md-6 ftco-animate">
     						<div class="blog-entry">
-		    					<a href="single.html" class="img d-flex align-items-end" style="background-image: url("<?php echo get_template_directory_uri(); ?>/images/image_1.jpg");">
+		    					<a href="single.html" class="img d-flex align-items-end" style="background-image: url(<?php echo get_template_directory_uri(). "/images/image_1.jpg"; ?>);">
 		    						<div class="overlay"></div>
 			    				</a>
 			    				<div class="text pt-3">
@@ -35,7 +35,7 @@
     					</div>
     					<div class="col-md-6 ftco-animate">
     						<div class="blog-entry">
-		    					<a href="single.html" class="img d-flex align-items-end" style="background-image: url("<?php echo get_template_directory_uri(); ?>/images/image_3.jpg");">
+		    					<a href="single.html" class="img d-flex align-items-end" style="background-image: url(<?php echo get_template_directory_uri(). "/images/image_3.jpg";?>);">
 		    						<div class="overlay"></div>
 			    				</a>
 			    				<div class="text pt-3">
@@ -47,7 +47,7 @@
     					</div>
     					<div class="col-md-6 ftco-animate">
     						<div class="blog-entry">
-		    					<a href="single.html" class="img d-flex align-items-end" style="background-image: url("<?php echo get_template_directory_uri(); ?>/images/image_4.jpg");">
+		    					<a href="single.html" class="img d-flex align-items-end" style="background-image: url(<?php echo get_template_directory_uri(). "/images/image_4.jpg"; ?>);">
 		    						<div class="overlay"></div>
 			    				</a>
 			    				<div class="text pt-3">
@@ -59,7 +59,7 @@
     					</div>
     					<div class="col-md-6 ftco-animate">
     						<div class="blog-entry">
-		    					<a href="single.html" class="img d-flex align-items-end" style="background-image: url("<?php echo get_template_directory_uri(); ?>/images/image_5.jpg");">
+		    					<a href="single.html" class="img d-flex align-items-end" style="background-image: url(<?php echo get_template_directory_uri(). "/images/image_5.jpg"; ?>);">
 		    						<div class="overlay"></div>
 			    				</a>
 			    				<div class="text pt-3">

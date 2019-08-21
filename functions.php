@@ -17,7 +17,7 @@ function add_css_js()
    wp_enqueue_style('flaticon', get_template_directory_uri()."/css/flaticon.css");
    wp_enqueue_style('iconmoon', get_template_directory_uri()."/css/icomoon.css");
 
-   wp_enqueue_style('myStyle', get_template_directory_uri() . '/css/styles.css');
+   wp_enqueue_style('myStyle', get_template_directory_uri() . '/css/style.css');
    // //Script
    wp_enqueue_script('jquery', get_template_directory_uri() . '/js/jquery.min.js', null, true);
    wp_enqueue_script('popper', get_template_directory_uri() . '/js/popper.min.js',['jquery'] ,null, true);
