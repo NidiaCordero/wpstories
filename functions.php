@@ -100,6 +100,8 @@ function ajout_image_article()
 add_action('init', 'ajout_image_article'); 
 
 
+// _________
 
+// _________
 
 ?>
