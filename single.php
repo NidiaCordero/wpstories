@@ -115,7 +115,7 @@ get_header();
                 </div>
                 <div class="sidebar-box ftco-animate">
                     <ul class="categories">
-                    <h3 class="heading mb-4">Categories</h3>
+                       <h3 class="heading mb-4">Categories</h3>
                         <?php $category_ids = get_all_category_ids(); ?>
                         <?php
                         $args = array(
@@ -129,7 +129,10 @@ get_header();
                     </ul>
                 </div>
 
-
+                <div class="sidebar-box ftco-animate">
+                  <p>hello</p>
+               
+                </div>
                 <?php
                 if( is_active_sidebar( 'zone-widgets-3') ):
                   dynamic_sidebar( 'zone-widgets-3' );

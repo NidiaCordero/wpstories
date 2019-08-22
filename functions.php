@@ -117,7 +117,7 @@ add_theme_support( 'html5', array( 'search-form' ) );
 // 			'after_title'	=> '</div>',
 // 		) );
 // }
-add_action( 'widgets_init', 'notux_widgets_two' );
+// add_action( 'widgets_init', 'notux_widgets_two' );
 function notux_widgets_three() {	
 	// Mon widget sur mesure
 		register_sidebar( array(
@@ -166,6 +166,9 @@ function mytheme_comment($comment, $args, $depth) {
     </li>
     <?php
    }
+
+
+
 
 
 
