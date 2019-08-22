@@ -102,6 +102,20 @@ add_action('init', 'ajout_image_article');
 
 // _________
 
-// _________
+
+function notux_widgets_init() {	
+	// Mon widget sur mesure
+		register_sidebar( array(
+			'name'			=> __( 'recent-cato', 'theme_stories' ),
+			'id'			=> 'zone-widgets-1',
+			'description'	=> __( 'single page', 'theme_stories' ),
+			'before_widget'	=> '<div id="%1$s" class="sidebar-box ftco-animate">',
+			'after_widget'	=> '</div>',
+			'before_title'	=> '<div class="heading mb-4">',
+			'after_title'	=> '</div>',
+		) );
+}
+add_action( 'widgets_init', 'notux_widgets_init' );
+
 
 ?>
