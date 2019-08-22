@@ -105,18 +105,18 @@ add_theme_support( 'html5', array( 'search-form' ) );
 // ----
 
 
-function notux_widgets_two() {	
-	// Mon widget sur mesure
-		register_sidebar( array(
-			'name'			=> __( 'recent-cato', 'theme_stories' ),
-			'id'			=> 'zone-widgets-2',
-			'description'	=> __( 'single page', 'theme_stories' ),
-			'before_widget'	=> '<div id="%1$s" class="sidebar-box ftco-animate">',
-			'after_widget'	=> '</div>',
-			'before_title'	=> '<div class="sidebar-box ftco-animate">',
-			'after_title'	=> '</div>',
-		) );
-}
+// function notux_widgets_two() {	
+// 	// Mon widget sur mesure
+// 		register_sidebar( array(
+// 			'name'			=> __( 'recent-cato', 'theme_stories' ),
+// 			'id'			=> 'zone-widgets-2',
+// 			'description'	=> __( 'single page', 'theme_stories' ),
+// 			'before_widget'	=> '<div id="%1$s" class="sidebar-box ftco-animate">',
+// 			'after_widget'	=> '</div>',
+// 			'before_title'	=> '<div class="sidebar-box ftco-animate">',
+// 			'after_title'	=> '</div>',
+// 		) );
+// }
 add_action( 'widgets_init', 'notux_widgets_two' );
 function notux_widgets_three() {	
 	// Mon widget sur mesure
@@ -155,7 +155,7 @@ function mytheme_comment($comment, $args, $depth) {
     ?>
     <li class="comment">
       <div class="vcard bio">
-        <img src="<?php echo get_avatar_url($comment->comment_ID);?>" alt="Image placeholder">
+        <img src="<?php echo get_avatar_url($comment->user_id);?>" alt="Image placeholder">
       </div>
       <div class="comment-body">
         <h3><?php echo $comment->comment_author;?></h3>

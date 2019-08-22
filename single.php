@@ -115,6 +115,7 @@ get_header();
                 </div>
                 <div class="sidebar-box ftco-animate">
                     <ul class="categories">
+                    <h3 class="heading mb-4">Categories</h3>
                         <?php $category_ids = get_all_category_ids(); ?>
                         <?php
                         $args = array(
@@ -122,7 +123,7 @@ get_header();
                           'parent' => 0);
                           $categories = get_categories( $args );
                           foreach ( $categories as $category ) {
-                            echo '<li><a href="' . get_category_link( $category->term_id ) . '" rel="bookmark">' . $category->name .'' . $category->description . '</a></li>';
+                            echo '<li><a href="' . get_category_link( $category->term_id ) . '" rel="bookmark">' . $category->name .'' . $category->description . '<span>' . $category->category_count . '</a> </span></li>';
                           }
                           ?>
                     </ul>
