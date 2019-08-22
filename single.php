@@ -60,60 +60,11 @@ get_header();
 
 
                 <div class="pt-5 mt-5">
+                  
                     <h3 class="mb-5">6 Comments</h3>
-                    <ul class="comment-list">
-                        <li class="comment">
-                            <div class="vcard bio">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/person_1.jpg"
-                                    alt="Image placeholder">
-                            </div>
-                            <div class="comment-body">
-                                <h3>John Doe</h3>
-                                <div class="meta">October 03, 2018 at 2:21pm</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                                    necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente
-                                    iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                <p><a href="#" class="reply">Reply</a></p>
-                            </div>
-                        </li>
-
-                        <li class="comment">
-                            <div class="vcard bio">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/person_1.jpg"
-                                    alt="Image placeholder">
-                            </div>
-                            <div class="comment-body">
-                                <h3>John Doe</h3>
-                                <div class="meta">October 03, 2018 at 2:21pm</div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum
-                                    necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente
-                                    iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                <p><a href="#" class="reply">Reply</a></p>
-                            </div>
-
-                            <ul class="children">
-                                <li class="comment">
-                                    <div class="vcard bio">
-                                        <img src="<?php echo get_template_directory_uri(); ?>/images/person_1.jpg"
-                                            alt="Image placeholder">
-                                    </div>
-                                    <div class="comment-body">
-                                        <h3>John Doe</h3>
-                                        <div class="meta">October 03, 2018 at 2:21pm</div>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem
-                                            laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe
-                                            enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?
-                                        </p>
-                                        <p><a href="#" class="reply">Reply</a></p>
-                                    </div>
-
-
-
-                                </li>
-                            </ul>
-                        </li>
-
-
+                    <?php comments_template(); ?>
+                  
+                
 
 
 
@@ -150,22 +101,47 @@ get_header();
             </div>
             <!-- .col-md-8 -->
             <div class="col-lg-4 sidebar pr-lg-5 ftco-animate">
+                <div class="sidebar-box">
+                    <form role="search" method="get" id="search-form" class="search-form"
+                        action="<?php echo esc_url( home_url( '/' ) ); ?>">
+                        <div class="form-group">
+                            <span class="icon icon-search"></span>
+                            <input type="search" class="form-control"
+                                placeholder="<?php echo esc_attr( 'Type a keyword and hit enter', 'presentation' ); ?>"
+                                name="s" id="search-input" value="<?php echo esc_attr( get_search_query() ); ?>" />
+
+                        </div>
+                    </form>
+                </div>
+                <div class="sidebar-box ftco-animate">
+                    <ul class="categories">
+                        <?php $category_ids = get_all_category_ids(); ?>
+                        <?php
+                        $args = array(
+                          'orderby' => 'slug',
+                          'parent' => 0);
+                          $categories = get_categories( $args );
+                          foreach ( $categories as $category ) {
+                            echo '<li><a href="' . get_category_link( $category->term_id ) . '" rel="bookmark">' . $category->name .'' . $category->description . '</a></li>';
+                          }
+                          ?>
+                    </ul>
+                </div>
+
+
                 <?php
-                if( is_active_sidebar( 'zone-widgets-1') ):
-                  dynamic_sidebar( 'zone-widgets-1' );
+                if( is_active_sidebar( 'zone-widgets-3') ):
+                  dynamic_sidebar( 'zone-widgets-3' );
+                endif;
+                ?>
+                <?php
+                if( is_active_sidebar( 'zone-widgets-4') ):
+                  dynamic_sidebar( 'zone-widgets-4');
                 endif;
                 ?>
             </div>
 
-            <!-- <div class="col-lg-4 sidebar pr-lg-5 ftco-animate">
-            <div class="sidebar-box">
-              <form action="#" class="search-form">
-                <div class="form-group">
-                  <span class="icon icon-search"></span>
-                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
-                </div>
-              </form>
-            </div> -->
+
             <!-- <div class="sidebar-box ftco-animate">
               <ul class="categories">
                 <h3 class="heading mb-4">Categories</h3>
@@ -239,36 +215,35 @@ get_header();
       </div>
     </section> 
      -->
-     </section> 
-            <!-- .section -->
+</section>
+<!-- .section -->
 
-            <section class="ftco-subscribe ftco-section bg-light">
-                <div class="overlay">
-                    <div class="container">
-                        <div class="row d-flex justify-content-center">
-                            <div class="col-md-8 text-wrap text-center heading-section ftco-animate">
-                                <h2 class="mb-4"><span>Subcribe to our Newsletter</span></h2>
-                                <p>A small river named Duden flows by their place and supplies it with the necessary
-                                    regelialia. It is a paradisematic country, in which roasted parts of sentences fly
-                                    into your mouth.</p>
-                                <div class="row d-flex justify-content-center mt-4 mb-4">
-                                    <div class="col-md-8">
-                                        <form action="#" class="subscribe-form">
-                                            <div class="form-group d-flex">
-                                                <input type="text" class="form-control"
-                                                    placeholder="Enter email address">
-                                                <input type="submit" value="Subscribe" class="submit px-3">
-                                            </div>
-                                        </form>
-                                    </div>
+<section class="ftco-subscribe ftco-section bg-light">
+    <div class="overlay">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8 text-wrap text-center heading-section ftco-animate">
+                    <h2 class="mb-4"><span>Subcribe to our Newsletter</span></h2>
+                    <p>A small river named Duden flows by their place and supplies it with the necessary
+                        regelialia. It is a paradisematic country, in which roasted parts of sentences fly
+                        into your mouth.</p>
+                    <div class="row d-flex justify-content-center mt-4 mb-4">
+                        <div class="col-md-8">
+                            <form action="#" class="subscribe-form">
+                                <div class="form-group d-flex">
+                                    <input type="text" class="form-control" placeholder="Enter email address">
+                                    <input type="submit" value="Subscribe" class="submit px-3">
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-            <?php 
+<?php 
 get_footer(); 
 ?>
