@@ -103,21 +103,23 @@ add_action('init', 'ajout_image_article');
 // _________
 add_theme_support( 'html5', array( 'search-form' ) );
 // ----
+if ( function_exists ('register_sidebar')) { 
+  register_sidebar ('custom'); 
+} 
 
-
-// function notux_widgets_two() {	
-// 	// Mon widget sur mesure
-// 		register_sidebar( array(
-// 			'name'			=> __( 'recent-cato', 'theme_stories' ),
-// 			'id'			=> 'zone-widgets-2',
-// 			'description'	=> __( 'single page', 'theme_stories' ),
-// 			'before_widget'	=> '<div id="%1$s" class="sidebar-box ftco-animate">',
-// 			'after_widget'	=> '</div>',
-// 			'before_title'	=> '<div class="sidebar-box ftco-animate">',
-// 			'after_title'	=> '</div>',
-// 		) );
-// }
-// add_action( 'widgets_init', 'notux_widgets_two' );
+function notux_widgets_two() {	
+	// Mon widget sur mesure
+		register_sidebar( array(
+			'name'			=> __( 'recent-cato', 'theme_stories' ),
+			'id'			=> 'zone-widgets-2',
+			'description'	=> __( 'single page', 'theme_stories' ),
+			'before_widget'	=> '<div id="%1$s" class="sidebar-box ftco-animate">',
+			'after_widget'	=> '</div>',
+			'before_title'	=> '<div class="sidebar-box ftco-animate">',
+			'after_title'	=> '</div>',
+		) );
+}
+add_action( 'widgets_init', 'notux_widgets_two' );
 function notux_widgets_three() {	
 	// Mon widget sur mesure
 		register_sidebar( array(
@@ -153,19 +155,26 @@ add_action( 'widgets_init', 'notux_widgets_four' );
 // -----------
 function mytheme_comment($comment, $args, $depth) {
     ?>
-    <li class="comment">
-      <div class="vcard bio">
+<li class="comment">
+    <div class="vcard bio">
         <img src="<?php echo get_avatar_url($comment->user_id);?>" alt="Image placeholder">
-      </div>
-      <div class="comment-body">
+    </div>
+    <div class="comment-body">
         <h3><?php echo $comment->comment_author;?></h3>
         <div class="meta"><?php echo $comment->comment_date;?></div>
         <p><?php echo $comment->comment_content;?></p>
         <p><a href="#" class="reply">Reply</a></p>
-      </div>
-    </li>
-    <?php
+    </div>
+</li>
+<?php
    }
+  //  --------------
+  //  --------------
+
+  
+
+  //  --------------
+  //  --------------
 
 
 
@@ -174,9 +183,3 @@ function mytheme_comment($comment, $args, $depth) {
 
 
 ?>
-
-
-
-
-
-
