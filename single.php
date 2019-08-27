@@ -60,42 +60,42 @@ get_header();
 
 
                 <div class="pt-5 mt-5">
-                  
+
                     <h3 class="mb-5">6 Comments</h3>
                     <?php comments_template(); ?>
-                  
-                
 
 
 
-                        <!-- END comment-list -->
 
-                        <div class="comment-form-wrap pt-5">
-                            <h3 class="mb-5">Leave a comment</h3>
-                            <form action="#" class="p-5 bg-light">
-                                <div class="form-group">
-                                    <label for="name">Name *</label>
-                                    <input type="text" class="form-control" id="name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email *</label>
-                                    <input type="email" class="form-control" id="email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="website">Website</label>
-                                    <input type="url" class="form-control" id="website">
-                                </div>
 
-                                <div class="form-group">
-                                    <label for="message">Message</label>
-                                    <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
-                                </div>
+                    <!-- END comment-list -->
 
-                            </form>
-                        </div>
+                    <div class="comment-form-wrap pt-5">
+                        <h3 class="mb-5">Leave a comment</h3>
+                        <form action="#" class="p-5 bg-light">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="website">Website</label>
+                                <input type="url" class="form-control" id="website">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                            </div>
+
+                        </form>
+                    </div>
                 </div>
 
             </div>
@@ -114,27 +114,20 @@ get_header();
                     </form>
                 </div>
                 <div class="sidebar-box ftco-animate">
-                <?php
-                // if( is_active_sidebar( 'zone-widgets-2') ):
-                //   dynamic_sidebar( 'zone-widgets-2' );
-                // endif;
-                get_sidebar('custom');
+                    <?php
+                get_sidebar('categories');
+                
+                ?>
+                </div>
+                <div class="sidebar-box ftco-animate">
+                    <?php
+                get_sidebar('recent');
                 
                 ?>
                 </div>
 
-               
-               
-                <?php
-                if( is_active_sidebar( 'zone-widgets-3') ):
-                  dynamic_sidebar( 'zone-widgets-3' );
-                endif;
-                ?>
-                <?php
-                if( is_active_sidebar( 'zone-widgets-4') ):
-                  dynamic_sidebar( 'zone-widgets-4');
-                endif;
-                ?>
+              
+                
             </div>
 
 

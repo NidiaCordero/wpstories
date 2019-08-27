@@ -104,7 +104,7 @@ add_action('init', 'ajout_image_article');
 add_theme_support( 'html5', array( 'search-form' ) );
 // ----
 if ( function_exists ('register_sidebar')) { 
-  register_sidebar ('custom'); 
+  register_sidebar ('recent'); 
 } 
 
 function notux_widgets_two() {	
@@ -115,8 +115,8 @@ function notux_widgets_two() {
 			'description'	=> __( 'single page', 'theme_stories' ),
 			'before_widget'	=> '<div id="%1$s" class="sidebar-box ftco-animate">',
 			'after_widget'	=> '</div>',
-			'before_title'	=> '<div class="sidebar-box ftco-animate">',
-			'after_title'	=> '</div>',
+			'before_title'	=> '<h3 class="heading mb-4" >',
+			'after_title'	=> '</h3>',
 		) );
 }
 add_action( 'widgets_init', 'notux_widgets_two' );
@@ -128,8 +128,8 @@ function notux_widgets_three() {
 			'description'	=> __( 'single page', 'theme_stories' ),
 			'before_widget'	=> '<div id="%1$s" class="sidebar-box ftco-animate">',
 			'after_widget'	=> '</div>',
-			'before_title'	=> '<div class="heading mb-4">',
-			'after_title'	=> '</div>',
+			'before_title'	=> '<h3 class="heading mb-4" >',
+			'after_title'	=> '</h3> ',
 		) );
 }
 add_action( 'widgets_init', 'notux_widgets_three' );
