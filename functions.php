@@ -103,9 +103,7 @@ add_action('init', 'ajout_image_article');
 // _________
 add_theme_support( 'html5', array( 'search-form' ) );
 // ----
-if ( function_exists ('register_sidebar')) { 
-  register_sidebar ('recent'); 
-} 
+
 
 function notux_widgets_two() {	
 	// Mon widget sur mesure
@@ -116,8 +114,12 @@ function notux_widgets_two() {
 			'before_widget'	=> '<div id="%1$s" class="sidebar-box ftco-animate">',
 			'after_widget'	=> '</div>',
 			'before_title'	=> '<h3 class="heading mb-4" >',
-			'after_title'	=> '</h3>',
-		) );
+      'after_title'	=> '</h3>',
+      
+    ) 
+
+  );
+    
 }
 add_action( 'widgets_init', 'notux_widgets_two' );
 // ajouter le span liste categ
@@ -127,21 +129,55 @@ function bs_categories_list_group_filter ($variable) {
   return $variable;
 }
 add_filter('wp_list_categories','bs_categories_list_group_filter');
-
+// -------
+// -------
+// -------
 
 function notux_widgets_three() {	
 	// Mon widget sur mesure
 		register_sidebar( array(
 			'name'			=> __( 'recent-post', 'theme_stories' ),
 			'id'			=> 'zone-widgets-3',
-			'description'	=> __( 'single page', 'theme_stories' ),
-			'before_widget'	=> '<div id="%1$s" class="sidebar-box ftco-animate">',
-			'after_widget'	=> '</div>',
-			'before_title'	=> '<h3 class="heading mb-4" >',
-			'after_title'	=> '</h3> ',
+      'description'	=> __( 'single page', 'theme_stories' ),
+      'before_widget' => '',
+      'after_widget'=> '',
+			// 'before_widget'	=> '<div id="%1$s" class="sidebar-box ftco-animate">',
+			// 'after_widget'	=> '</div>',
+			// 'before_title'	=> '<h3 class="heading mb-4" >',
+			// 'after_title'	=> '</h3> ',
 		) );
 }
 add_action( 'widgets_init', 'notux_widgets_three' );
+
+// --------
+// --------
+add_theme_support( 'post-thumbnails' ); //Adds thumbnails compatibility to the theme 
+set_post_thumbnail_size( 200, 170, true ); // Sets the Post Main Thumbnails 
+add_image_size( 'delicious-recent-thumbnails', 55, 55, true ); // Sets Recent Posts Thumbnails 
+
+
+function delicious_recent_posts() {
+  $del_recent_posts = new WP_Query();
+  $del_recent_posts->query('showposts=3');
+      while ($del_recent_posts->have_posts()) : $del_recent_posts->the_post(); ?>
+          <li>
+              <a href="<?php esc_url(the_permalink()); ?>">
+                  <?php the_post_thumbnail('delicious-recent-thumbnails'); ?>
+              </a>
+              <h4>
+                  <a href="<?php esc_url(the_permalink()); ?>">
+                      <?php esc_html(the_title()); ?>
+                 </a>
+              </h4>
+          </li>
+      <?php endwhile;
+  wp_reset_postdata();
+}
+
+// --------
+
+
+// --------
 function notux_widgets_four() {	
 	// Mon widget sur mesure
 		register_sidebar( array(
@@ -150,7 +186,7 @@ function notux_widgets_four() {
 			'description'	=> __( 'single page', 'theme_stories' ),
 			'before_widget'	=> '<div id="%1$s" class="sidebar-box ftco-animate">',
 			'after_widget'	=> '</div>',
-			'before_title'	=> '<div class="heading mb-4">',
+			'before_title'	=> '<div class="heading mb-4 ">',
 			'after_title'	=> '</div>',
 		) );
 }
@@ -179,7 +215,30 @@ function mytheme_comment($comment, $args, $depth) {
    }
   //  --------------
   //  --------------
+/**
+ * Recent Posts Widget: Append Thumbs
+ */
+add_filter( 'widget_posts_args', function( array $args )
+{
+    add_filter( 'the_title', 'wpse_prepend_thumbnail', 10, 2 );
+    add_action( 'loop_end',  'wpse_clean_up' );
+    return $args;
+} );
+function wpse_prepend_thumbnail( $title, $post_id )
+{
+    static $instance = 0;
 
+    // Append thumbnail every second time (odd)
+    if( 1 === $instance++ % 2 && has_post_thumbnail( $post_id ) )
+        $title = get_the_post_thumbnail( $post_id ) . $title;
+
+    return $title;
+} 
+function wpse_clean_up( \WP_Query $q )
+{
+    remove_filter( current_filter(), __FUNCTION__ );
+    remove_filter( 'the_title', 'wpse_add_thumnail', 10 );
+} 
   
   
   //  --------------
@@ -187,8 +246,10 @@ function mytheme_comment($comment, $args, $depth) {
 
 
 
+  
 
 
 
 
-?>
+  
+ ?> 

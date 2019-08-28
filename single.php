@@ -113,21 +113,20 @@ get_header();
                         </div>
                     </form>
                 </div>
+
                 <div class="sidebar-box ftco-animate">
                     <?php
                 get_sidebar('categories');
                 
                 ?>
                 </div>
+
                 <div class="sidebar-box ftco-animate">
-                    <?php
+                <?php
                 get_sidebar('recent');
                 
                 ?>
                 </div>
-
-              
-                
             </div>
 
 
