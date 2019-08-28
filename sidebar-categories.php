@@ -10,8 +10,10 @@
     ob_end_clean();
 
     $sidebar_corrected_ul = str_replace("<ul>", '<ul class="categories">', $sidebar);
+   
     
     echo $sidebar_corrected_ul;
+ 
    
   
     } 

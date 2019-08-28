@@ -4,7 +4,7 @@
     <div class="sidebar-widget">
         <?php if(function_exists('dynamic_sidebar')) {
  ob_start();
- dynamic_sidebar('zone-widgets-2');
+ dynamic_sidebar('zone-widgets-3');
  $sidebar = ob_get_contents();
  ob_end_clean();
 

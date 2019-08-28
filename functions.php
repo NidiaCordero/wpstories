@@ -120,6 +120,15 @@ function notux_widgets_two() {
 		) );
 }
 add_action( 'widgets_init', 'notux_widgets_two' );
+// ajouter le span liste categ
+function bs_categories_list_group_filter ($variable) {
+  $variable = str_replace('<li class="cat-item cat-item-> ', '<li>', $variable);
+  $variable = str_replace('</a>', '<span>', $variable);
+  return $variable;
+}
+add_filter('wp_list_categories','bs_categories_list_group_filter');
+
+
 function notux_widgets_three() {	
 	// Mon widget sur mesure
 		register_sidebar( array(
@@ -172,7 +181,7 @@ function mytheme_comment($comment, $args, $depth) {
   //  --------------
 
   
-
+  
   //  --------------
   //  --------------
 
