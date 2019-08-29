@@ -30,23 +30,25 @@ get_header();
             <div class="col-lg-8 order-lg-last ftco-animate">
                 <!-- afficher l'article -->
                 <?php while (have_posts()) : the_post(); ?>
-
-                <h2 class="mb-3">It is a long established fact a reader be distracted</h2>
+               
+                <h2 class="mb-3" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></h2>
                 <div class="post-content">
                     <?php the_content(); ?>
                 </div>
                 <?php endwhile; ?>
                 <div class="tag-widget post-tag-container mb-5 mt-5">
-                   
+                   <!-- tags  -->
                     <?php
-if(get_the_tag_list()) {
-    echo get_the_tag_list('<div class="tagcloud">','','</div>');
-}
-?>
+                    if(get_the_tag_list()) {
+                      echo get_the_tag_list('<div class="tagcloud">','','</div>');
+                    }
+                    ?>
                 </div>
-
+                
                 <div class="about-author d-flex p-4 bg-light">
-                    <div class="bio mr-5">
+                <?php get_template_part('single-author') ?>
+
+                    <!-- <div class="bio mr-5">
                         <img src="<?php echo get_template_directory_uri(); ?>/images/person_1.jpg"
                             alt="Image placeholder" class="img-fluid mb-4">
                     </div>
@@ -55,7 +57,7 @@ if(get_the_tag_list()) {
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem
                             necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente
                             consectetur similique, inventore eos fugit cupiditate numquam!</p>
-                    </div>
+                    </div> -->
                 </div>
 
 
