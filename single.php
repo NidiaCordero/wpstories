@@ -37,12 +37,12 @@ get_header();
                 </div>
                 <?php endwhile; ?>
                 <div class="tag-widget post-tag-container mb-5 mt-5">
-                    <div class="tagcloud">
-                        <a href="#" class="tag-cloud-link">Life</a>
-                        <a href="#" class="tag-cloud-link">Sport</a>
-                        <a href="#" class="tag-cloud-link">Tech</a>
-                        <a href="#" class="tag-cloud-link">Travel</a>
-                    </div>
+                   
+                    <?php
+if(get_the_tag_list()) {
+    echo get_the_tag_list('<div class="tagcloud">','','</div>');
+}
+?>
                 </div>
 
                 <div class="about-author d-flex p-4 bg-light">
@@ -140,34 +140,7 @@ get_header();
 
 
 
-            <!-- 
-
-
-
-            <div class="sidebar-box ftco-animate">
-              <h3 class="heading mb-4">Tag Cloud</h3>
-              <div class="tagcloud">
-                <a href="#" class="tag-cloud-link">dish</a>
-                <a href="#" class="tag-cloud-link">menu</a>
-                <a href="#" class="tag-cloud-link">food</a>
-                <a href="#" class="tag-cloud-link">sweet</a>
-                <a href="#" class="tag-cloud-link">tasty</a>
-                <a href="#" class="tag-cloud-link">delicious</a>
-                <a href="#" class="tag-cloud-link">desserts</a>
-                <a href="#" class="tag-cloud-link">drinks</a>
-              </div>
-            </div>
-
-            <div class="sidebar-box ftco-animate">
-              <h3 class="heading mb-4">Paragraph</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section> 
-     -->
+     
 </section>
 <!-- .section -->
 
