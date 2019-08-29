@@ -151,29 +151,72 @@ add_action( 'widgets_init', 'notux_widgets_three' );
 
 // --------
 // --------
-add_theme_support( 'post-thumbnails' ); //Adds thumbnails compatibility to the theme 
-set_post_thumbnail_size( 200, 170, true ); // Sets the Post Main Thumbnails 
-add_image_size( 'delicious-recent-thumbnails', 55, 55, true ); // Sets Recent Posts Thumbnails 
+Class My_Recent_Posts_Widget extends WP_Widget_Recent_Posts {
 
+        function widget($args, $instance) {
 
-function delicious_recent_posts() {
-  $del_recent_posts = new WP_Query();
-  $del_recent_posts->query('showposts=3');
-      while ($del_recent_posts->have_posts()) : $del_recent_posts->the_post(); ?>
-          <li>
-              <a href="<?php esc_url(the_permalink()); ?>">
-                  <?php the_post_thumbnail('delicious-recent-thumbnails'); ?>
-              </a>
-              <h4>
-                  <a href="<?php esc_url(the_permalink()); ?>">
-                      <?php esc_html(the_title()); ?>
-                 </a>
-              </h4>
-          </li>
-      <?php endwhile;
-  wp_reset_postdata();
+                if ( ! isset( $args['widget_id'] ) ) {
+                $args['widget_id'] = $this->id;
+            }
+
+            $title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Recent Posts' );
+
+            /** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
+            $title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
+
+            $number = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : 5;
+            if ( ! $number )
+                $number = 5;
+            $show_date = isset( $instance['show_date'] ) ? $instance['show_date'] : false;
+
+            /**
+             * Filter the arguments for the Recent Posts widget.
+             *
+             * @since 3.4.0
+             *
+             * @see WP_Query::get_posts()
+             *
+             * @param array $args An array of arguments used to retrieve the recent posts.
+             */
+            $r = new WP_Query( apply_filters( 'widget_posts_args', array(
+                'posts_per_page'      => $number,
+                'no_found_rows'       => true,
+                'post_status'         => 'publish',
+                'ignore_sticky_posts' => true
+            ) ) );
+
+            if ($r->have_posts()) :
+            ?>
+            <?php echo $args['before_widget']; ?>
+            <?php if ( $title ) {
+                echo $args['before_title'] . $title . $args['after_title'];
+            } ?>
+            <ul>
+            <?php while ( $r->have_posts() ) : $r->the_post(); ?>
+                <li>
+                    <!-- <?php the_post_thumbnail(); ?> -->
+                    <a href="<?php the_permalink(); ?>"><?php get_the_title() ? the_title() : the_ID(); ?></a>
+                <?php if ( $show_date ) : ?>
+                    <span class="post-date"><?php echo get_the_date(); ?></span>
+                <?php endif; ?>
+                </li>
+            <?php endwhile; ?>
+            </ul>
+            <?php echo $args['after_widget']; ?>
+            <?php
+            // Reset the global $the_post as this query will have stomped on it
+            wp_reset_postdata();
+
+            endif;
+        }
 }
-
+function my_recent_widget_registration() {
+  unregister_widget('WP_Widget_Recent_Posts');
+  register_widget('My_Recent_Posts_Widget');
+}
+add_action('widgets_init', 'my_recent_widget_registration');
+add_theme_support( 'post-thumbnails' );
+set_post_thumbnail_size( 150, 150 );
 // --------
 
 

@@ -1,9 +1,12 @@
 
         
-          <?php if ( is_active_sidebar( 'zone-widgets-3' ) ) : 
-          echo delicious_recent_posts(); 
-          
-endif; ?>
+        
+         <div id="secondary" class="widget-area" role="complementary">
+         <?php dynamic_sidebar( 'zone-widgets-3' ); ?>
+ 
+         
+ </div>
+
          
          
           
