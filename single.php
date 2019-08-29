@@ -122,25 +122,16 @@ get_header();
                 </div>
 
                 <div class="sidebar-box ftco-animate">
-                <?php
-                get_sidebar('recent');
+                    <?php
+                 dynamic_sidebar( 'zone-widgets-3' ); 
                 
                 ?>
                 </div>
             </div>
 
 
-            <!-- <div class="sidebar-box ftco-animate">
-              <ul class="categories">
-                <h3 class="heading mb-4">Categories</h3>
-                <li><a href="#">Travel <span>(12)</span></a></li>
-                <li><a href="#">Tour <span>(22)</span></a></li>
-                <li><a href="#">Destination <span>(37)</span></a></li>
-                <li><a href="#">Drinks <span>(42)</span></a></li>
-                <li><a href="#">Foods <span>(14)</span></a></li>
-                <li><a href="#">Travel <span>(140)</span></a></li>
-              </ul>
-            </div>
+
+            <!-- 
 
             <div class="sidebar-box ftco-animate">
               <h3 class="heading mb-4">Recent Blog</h3>

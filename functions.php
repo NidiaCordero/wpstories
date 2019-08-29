@@ -139,12 +139,11 @@ function notux_widgets_three() {
 			'name'			=> __( 'recent-post', 'theme_stories' ),
 			'id'			=> 'zone-widgets-3',
       'description'	=> __( 'single page', 'theme_stories' ),
-      'before_widget' => '',
-      'after_widget'=> '',
-			// 'before_widget'	=> '<div id="%1$s" class="sidebar-box ftco-animate">',
-			// 'after_widget'	=> '</div>',
-			// 'before_title'	=> '<h3 class="heading mb-4" >',
-			// 'after_title'	=> '</h3> ',
+      
+			'before_widget'	=> '',
+			'after_widget'	=> '',
+			'before_title'	=> '<h3 class="heading mb-4" >',
+			'after_title'	=> '</h3> ',
 		) );
 }
 add_action( 'widgets_init', 'notux_widgets_three' );
@@ -187,23 +186,31 @@ Class My_Recent_Posts_Widget extends WP_Widget_Recent_Posts {
 
             if ($r->have_posts()) :
             ?>
-            <?php echo $args['before_widget']; ?>
-            <?php if ( $title ) {
+<?php echo $args['before_widget']; ?>
+<?php if ( $title ) {
                 echo $args['before_title'] . $title . $args['after_title'];
             } ?>
-            <ul>
-            <?php while ( $r->have_posts() ) : $r->the_post(); ?>
-                <li>
-                    <!-- <?php the_post_thumbnail(); ?> -->
-                    <a href="<?php the_permalink(); ?>"><?php get_the_title() ? the_title() : the_ID(); ?></a>
-                <?php if ( $show_date ) : ?>
-                    <span class="post-date"><?php echo get_the_date(); ?></span>
-                <?php endif; ?>
-                </li>
-            <?php endwhile; ?>
-            </ul>
-            <?php echo $args['after_widget']; ?>
-            <?php
+
+    <?php while ( $r->have_posts() ) : $r->the_post(); ?>
+    <div class="block-21 mb-4 d-flex">
+    <a class="blog-img mr-4"><?php the_post_thumbnail(); ?> </a>
+    <div class="text">
+    <h3><a href="<?php the_permalink(); ?>"><?php get_the_title() ? the_title() : the_ID(); ?></a> </h3>
+    <div class="meta">
+        <?php if ( $show_date ) : ?>
+        
+            <div> <span class="post-date"><?php echo get_the_date(); ?></span></div>
+    </div>
+    
+    <?php endif; ?>
+    </div>
+    </div>
+    <?php endwhile; ?>
+   
+
+<?php echo $args['after_widget']; ?>
+
+<?php
             // Reset the global $the_post as this query will have stomped on it
             wp_reset_postdata();
 
@@ -216,10 +223,8 @@ function my_recent_widget_registration() {
 }
 add_action('widgets_init', 'my_recent_widget_registration');
 add_theme_support( 'post-thumbnails' );
-set_post_thumbnail_size( 150, 150 );
+set_post_thumbnail_size( 78, 80 );
 // --------
-
-
 // --------
 function notux_widgets_four() {	
 	// Mon widget sur mesure
@@ -258,30 +263,7 @@ function mytheme_comment($comment, $args, $depth) {
    }
   //  --------------
   //  --------------
-/**
- * Recent Posts Widget: Append Thumbs
- */
-add_filter( 'widget_posts_args', function( array $args )
-{
-    add_filter( 'the_title', 'wpse_prepend_thumbnail', 10, 2 );
-    add_action( 'loop_end',  'wpse_clean_up' );
-    return $args;
-} );
-function wpse_prepend_thumbnail( $title, $post_id )
-{
-    static $instance = 0;
 
-    // Append thumbnail every second time (odd)
-    if( 1 === $instance++ % 2 && has_post_thumbnail( $post_id ) )
-        $title = get_the_post_thumbnail( $post_id ) . $title;
-
-    return $title;
-} 
-function wpse_clean_up( \WP_Query $q )
-{
-    remove_filter( current_filter(), __FUNCTION__ );
-    remove_filter( 'the_title', 'wpse_add_thumnail', 10 );
-} 
   
   
   //  --------------
@@ -295,4 +277,4 @@ function wpse_clean_up( \WP_Query $q )
 
 
   
- ?> 
+ ?>
