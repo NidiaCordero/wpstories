@@ -8,23 +8,19 @@ $author_avatar      = get_avatar( get_the_author_meta( 'user_email' ), apply_fil
 // Only display if author has a description
 if ( $author_description ) : ?>
 
-
-
-
-
-    <?php if ( $author_avatar ) { ?>
-    <div class="bio mr-5">
-        <a href="<?php echo esc_url( $author_url ); ?>" rel="author" class="img-fluid mb-4">
-            <?php echo $author_avatar; ?>
-        </a>
-    </div><!-- .author-avatar -->
-    <?php } ?>
-    <div class="desc">
-        <h3 class="heading"><span>
-                <?php printf( esc_html( $author ) ); ?></span></h3>
-        <p><?php echo wp_kses_post( $author_description ); ?></p>
-        <p>
-    </div><!-- .author-description -->
+<?php if ( $author_avatar ) { ?>
+<div class="bio mr-5">
+    <a href="<?php echo esc_url( $author_url ); ?>" rel="author" class="img-fluid mb-4">
+        <?php echo $author_avatar; ?>
+    </a>
+</div><!-- .author-avatar -->
+<?php } ?>
+<div class="desc">
+    <h3 class="heading"><span>
+            <?php printf( esc_html( $author ) ); ?></span></h3>
+    <p><?php echo wp_kses_post( $author_description ); ?></p>
+    <p>
+</div><!-- .author-description -->
 
 
 

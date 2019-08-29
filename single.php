@@ -47,31 +47,17 @@ get_header();
                 
                 <div class="about-author d-flex p-4 bg-light">
                 <?php get_template_part('single-author') ?>
-
-                    <!-- <div class="bio mr-5">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/person_1.jpg"
-                            alt="Image placeholder" class="img-fluid mb-4">
-                    </div>
-                    <div class="desc">
-                        <h3>George Washington</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem
-                            necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente
-                            consectetur similique, inventore eos fugit cupiditate numquam!</p>
-                    </div> -->
                 </div>
 
 
                 <div class="pt-5 mt-5">
 
                     <h3 class="mb-5">6 Comments</h3>
-                    <?php comments_template(); ?>
-
-
-
+                   
 
 
                     <!-- END comment-list -->
-
+                    <?php comment_form(); ?>.
                     <div class="comment-form-wrap pt-5">
                         <h3 class="mb-5">Leave a comment</h3>
                         <form action="#" class="p-5 bg-light">
