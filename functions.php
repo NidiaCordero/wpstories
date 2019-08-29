@@ -236,16 +236,15 @@ function notux_widgets_four() {
 			'name'			=> __( 'recent-tags', 'theme_stories' ),
 			'id'			=> 'zone-widgets-4',
 			'description'	=> __( 'single page', 'theme_stories' ),
-			'before_widget'	=> '<div id="%1$s" class="sidebar-box ftco-animate">',
-			'after_widget'	=> '</div>',
-			'before_title'	=> '<div class="heading mb-4 ">',
-			'after_title'	=> '</div>',
+			'before_widget'	=> '',
+			'after_widget'	=> '',
+			'before_title'	=> '<h3 class="heading mb-4" >',
+			'after_title'	=> '</h3>',
 		) );
 }
 add_action( 'widgets_init', 'notux_widgets_four' );
 
 
-    
 
 // ------
 // commentaires
