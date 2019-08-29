@@ -199,7 +199,11 @@ Class My_Recent_Posts_Widget extends WP_Widget_Recent_Posts {
     <div class="meta">
         <?php if ( $show_date ) : ?>
         
-            <div> <span class="post-date"><?php echo get_the_date(); ?></span></div>
+            <div> <span class="icon-calendar"> <?php echo get_the_date(); ?></span></div>
+            <div> <span class="icon-person"> <?php the_author(); ?> </span></div>
+            <div> <span class="icon-chat">  <?php if(get_comments_number() == 0) : ?>
+        <?php comments_number('0 ', '1 ', '% '); ?>
+    <?php endif; ?> </span></div>
     </div>
     
     <?php endif; ?>
