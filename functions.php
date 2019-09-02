@@ -274,10 +274,18 @@ function mytheme_comment($comment, $args, $depth) {
 
 
 
-  
+
+  function wpdocs_excerpt_more( $more ) {
+    return '<p><a href="'.get_the_permalink().'" rel="nofollow" class="btn btn-black px-3 px-md-4 py-3">Read More...<span class="icon-arrow_forward ml-lg-4"></span></a></p>';
+}
+add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
+
+// Modifier le nombre de mots des extraits
+function wpm_post_excerpt($length) {
+	return 10;
+}
+add_filter('excerpt_length', 'wpm_post_excerpt');
 
 
 
-
-  
  ?>

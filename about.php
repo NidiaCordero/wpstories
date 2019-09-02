@@ -1,3 +1,10 @@
+<?php
+/*
+Template Name: page about
+Template Post Type: post
+*/
+ ?>
+
 <?php 
 get_header(); 
 ?>
